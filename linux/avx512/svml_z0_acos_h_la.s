@@ -22,6 +22,7 @@
 __svml_acoss32:
 
         .cfi_startproc
+        endbr64
 
         vmovdqu16 __svml_hacos_data_internal(%rip), %zmm30
         vmovdqu16 64+__svml_hacos_data_internal(%rip), %zmm1
@@ -145,3 +146,15 @@ __svml_hacos_data_internal:
         .type	__svml_hacos_data_internal,@object
         .size	__svml_hacos_data_internal,512
 	 .section        .note.GNU-stack,"",@progbits
+	.section .note.gnu.property,"a",@note
+	.p2align 3
+	.long 4				/* namesz */
+	.long 0x10			/* descsz */
+	.long 5				/* NT_GNU_PROPERTY_TYPE_0 */
+	.asciz "GNU"			/* name */
+	.p2align 3
+	.long 0xc0000002		/* GNU_PROPERTY_X86_FEATURE_1_AND */
+	.long 4				/* pr_datasz */
+	.long 3				/* GNU_PROPERTY_X86_FEATURE_1_IBT | GNU_PROPERTY_X86_FEATURE_1_SHSTK */
+	.p2align 3
+

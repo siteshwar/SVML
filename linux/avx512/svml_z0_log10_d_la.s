@@ -27,6 +27,7 @@ __svml_log108:
 
 
 	.cfi_startproc
+        endbr64
 ..L2:
 
         pushq     %rbp
@@ -1125,3 +1126,15 @@ __dlog10_la_CoutTab:
 	.size	.L_2il0floatpacket.89,8
 
       .section        .note.GNU-stack,"",@progbits
+	.section .note.gnu.property,"a",@note
+	.p2align 3
+	.long 4				/* namesz */
+	.long 0x10			/* descsz */
+	.long 5				/* NT_GNU_PROPERTY_TYPE_0 */
+	.asciz "GNU"			/* name */
+	.p2align 3
+	.long 0xc0000002		/* GNU_PROPERTY_X86_FEATURE_1_AND */
+	.long 4				/* pr_datasz */
+	.long 3				/* GNU_PROPERTY_X86_FEATURE_1_IBT | GNU_PROPERTY_X86_FEATURE_1_SHSTK */
+	.p2align 3
+
